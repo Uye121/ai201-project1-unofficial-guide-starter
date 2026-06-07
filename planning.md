@@ -10,6 +10,9 @@
 ## Domain
 
 <!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
+UCSD Social Life
+
+Official guides usually contain administrative items, academic policies, and safety protocols. Unofficial guides are run by students that shows what social life is actually like on the ground from the perspective of current students or alumni.
 
 ---
 
