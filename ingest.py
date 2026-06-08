@@ -53,7 +53,7 @@ def load_documents():
     return documents
 
 
-def chunk_document(text, title):
+def chunk_document(text, title, source, url):
     """
     Recursive chunking: split on '---' sections, sub-split oversized ones.
 
@@ -68,6 +68,9 @@ def chunk_document(text, title):
     counter = 0
 
     for section in [s.strip() for s in text.split("---") if s.strip()]:
+        if section.lstrip().startswith(("[POST]", "[QUESTION]")): # Skip post and question as they are usually prompts
+            continue
+
         words = section.split()
         if len(words) <= max_words:
             pieces = [section]
@@ -81,7 +84,8 @@ def chunk_document(text, title):
 
         for piece in pieces:
             if len(piece.split()) >= min_words:
-                chunks.append({"text": piece, "title": title,
+                chunks.append({"text": piece, "title": title, "source": source,
+                               "position": counter, "url": url,
                                "chunk_id": f"{prefix}_{counter}"})
                 counter += 1
 
